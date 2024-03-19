@@ -1,0 +1,19 @@
+<header>
+  <nav
+    class="bg-secondary-500 absolute w-full bottom-0 py-4 px-2 text-white flex justify-center items-center desktop:relative"
+  >
+    @for (item of navItems; track $index) {
+    <a
+      class="flex flex-col mr-7 last-of-type:mr-0 justify-center items-center text-[9px] desktop:flex-row desktop:gap-2"
+      href=""
+    >
+      <span
+        class="material-symbols-outlined text-accent-500 text-2xl leading-normal"
+      >
+        {{ item.icon }}
+      </span>
+      {{ item.text }}
+    </a>
+    }
+  </nav>
+</header>
