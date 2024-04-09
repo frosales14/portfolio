@@ -1,14 +1,14 @@
-<header>
+<header class="bg-secondary-500 py-4 px-2 text-white flex items-center">
   <nav
-    class="bg-secondary-500 absolute w-full bottom-0 py-4 px-2 text-white flex justify-center items-center desktop:relative"
+    class="flex justify-center items-center desktop:mx-auto desktop:container"
   >
     @for (item of navItems; track $index) {
     <a
-      class="flex flex-col mr-7 last-of-type:mr-0 justify-center items-center text-[9px] desktop:flex-row desktop:gap-2"
+      class="flex flex-col mr-10 last-of-type:mr-0 justify-center items-center text-[9px] desktop:flex-row desktop:gap-2 desktop:text-xs"
       href=""
     >
       <span
-        class="material-symbols-outlined text-accent-500 text-2xl leading-normal"
+        class="material-symbols-outlined text-accent-500 text-xl leading-normal"
       >
         {{ item.icon }}
       </span>
