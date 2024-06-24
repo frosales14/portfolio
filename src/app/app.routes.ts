@@ -6,4 +6,8 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
+  {
+    path: 'proyect/:id',
+    loadComponent: () => import('./pages/proyect-info/proyect-info.component'),
+  },
 ];

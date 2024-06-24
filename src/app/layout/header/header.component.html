@@ -1,11 +1,13 @@
 <header class="bg-secondary-500 py-4 px-2 text-white flex items-center">
   <nav
-    class="flex justify-center items-center desktop:mx-auto desktop:container"
+    class="flex justify-center w-full items-center desktop:mx-auto desktop:container"
   >
+    <!-- [href]="item.navigateUrl" -->
     @for (item of navItems; track $index) {
-    <a
-      class="flex flex-col mr-10 last-of-type:mr-0 justify-center items-center text-[9px] desktop:flex-row desktop:gap-2 desktop:text-xs"
-      href=""
+    <button
+      type="button"
+      (click)="scrollToElement(item)"
+      class="flex flex-col mr-10 cursor-pointer last-of-type:mr-0 justify-center items-center text-[9px] desktop:flex-row desktop:gap-2 desktop:text-xs"
     >
       <span
         class="material-symbols-outlined text-accent-500 text-xl leading-normal"
@@ -13,7 +15,7 @@
         {{ item.icon }}
       </span>
       {{ item.text }}
-    </a>
+    </button>
     }
   </nav>
 </header>

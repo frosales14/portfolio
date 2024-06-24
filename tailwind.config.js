@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
@@ -13,6 +14,25 @@ module.exports = {
         "4xl": "clamp(3.05rem, 3.54vi + 2.17rem, 5rem)",
         "5xl": "clamp(3.81rem, 5.18vi + 2.52rem, 6.66rem)",
         "6xl": "clamp(4.77rem, 7.48vi + 2.9rem, 8.88rem)",
+      },
+      animation: {
+        float: "float 4s ease-in-out infinite",
+      },
+      keyframes: {
+        float: {
+          "0%": {
+            filter: "drop-shadow(5px 5px 10px #000)",
+            transform: "translatey(0px)",
+          },
+          "50%": {
+            filter: "drop-shadow(5px 5px 10px #000)",
+            transform: "translatey(-20px)",
+          },
+          "100%": {
+            filter: "drop-shadow(5px 5px 10px #000)",
+            transform: "translatey(0px)",
+          },
+        },
       },
     },
     screens: {
@@ -57,7 +77,29 @@ module.exports = {
         900: "#010e14",
       },
       white: "#FFF",
+      transparent: "transparent",
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "animate-duration": (value) => ({
+            animationDuration: value,
+          }),
+        },
+        { values: theme("transitionDuration") }
+      );
+    }),
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "animate-delay": (value) => ({
+            animationDelay: value,
+          }),
+        },
+        { values: theme("transitionDelay") }
+      );
+    }),
+  ],
 };

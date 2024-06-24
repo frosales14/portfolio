@@ -1,0 +1,36 @@
+<section
+  id="services"
+  class="text-gray-400 px-4 bg-gray-900 body-font container mx-auto mt-14 tablet:px-0"
+>
+  <h1
+    class="text-white font-medium title-font inline-block text-2xl relative after:absolute after:w-1/2 after:h-1 after:bg-accent-500 after:bottom-0 after:left-0"
+  >
+    Services
+  </h1>
+  <div class="px-5 mx-auto">
+    @for( service of services; track service.id; let index = $index){
+    <div
+      class="service-container flex items-center last-of-type:mb-28 last-of-type:pb-0 w-full border-b last-of-type:border-b-0 pb-10 mb-10 border-accent-100 border-opacity-30 tablet:flex-row flex-col"
+    >
+      <div
+        class="w-60 h-60 tablet:mr-10 inline-flex items-center justify-center rounded-full text-indigo-400 bg-gray-800 flex-shrink-0"
+        [ngClass]="{ 'tablet:order-last': index % 2 !== 0 }"
+      >
+        <img
+          class="animate-float"
+          [src]="service.icon"
+          [alt]="service.title + ' icon'"
+        />
+      </div>
+      <div class="flex-grow text-left mt-6 tablet:mt-0">
+        <h2 class="text-white text-lg title-font font-medium mb-2">
+          {{ service.title }}
+        </h2>
+        <p class="leading-relaxed text-base text-white">
+          {{ service.text }}
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+</section>

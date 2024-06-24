@@ -1,0 +1,10 @@
+<select
+  id="language"
+  class="bg-secondary-500 border-primary-400 text-white text-sm rounded-lg focus:ring-accent-500 focus:border-accent-500 block w-full p-2.5"
+>
+  @for( lang of languageList; track lang.id ){
+  <option class="bg-primary-400" [value]="lang.id">
+    {{ lang.name }}
+  </option>
+  }
+</select>
