@@ -1,4 +1,4 @@
-name: Angular CI
+name: Deploy Portfolio
 
 # Controls when the workflow will run
 on:
@@ -24,14 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      #setup noode
+      #setup node
       - name: setup nodejs
         uses: actions/checkout@v4
         with:
           node-version: "20"
 
       #install packages
-      - name: install deps
+      - name: install packages
         run: npm i
 
       #build app for production
@@ -39,9 +39,9 @@ jobs:
         run: npm run build:prod
 
       #deploy
-      - name: deploy to page
-        uses: crazy-max/ghaction-github-pages@v4.0.0
-        with:
-          build_dir: dist/portfolio
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      # - name: deploy to page
+      #   uses: crazy-max/ghaction-github-pages@v4.0.0
+      #   with:
+      #     build_dir: dist/portfolio
+      #   env:
+      #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
