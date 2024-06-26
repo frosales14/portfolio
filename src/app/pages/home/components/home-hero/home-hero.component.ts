@@ -8,4 +8,10 @@ import { ButtonComponent } from '@shared/components/button/button.component';
   templateUrl: './home-hero.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeHeroComponent {}
+export class HomeHeroComponent {
+  onContactMeClick() {
+    const contactSection = document.getElementById('contac') as HTMLElement;
+    if (!contactSection) return;
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}

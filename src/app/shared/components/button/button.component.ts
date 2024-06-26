@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -10,4 +16,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class ButtonComponent {
   text = input.required<string>();
+  @Output() btnClickAction = new EventEmitter<void>();
 }
