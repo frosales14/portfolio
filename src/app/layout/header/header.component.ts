@@ -1,13 +1,13 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  afterNextRender,
   inject,
 } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 
-import { BehaviorSubject, debounce, delay, filter, map, pipe, tap } from 'rxjs';
+import { BehaviorSubject, delay, filter, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +33,7 @@ import { BehaviorSubject, debounce, delay, filter, map, pipe, tap } from 'rxjs';
     ]),
   ],
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent {
   router = inject(Router);
   scrollTarget$ = new BehaviorSubject<string | null>(null);
 
@@ -52,9 +52,11 @@ export class HeaderComponent implements AfterViewInit {
     { text: 'Contact', icon: 'mail', section: 'contact', baseUrl: '/' },
   ];
 
-  ngAfterViewInit() {
-    this.listenScrollTarget();
-    this.listenNavigationEnds();
+  constructor() {
+    afterNextRender(() => {
+      this.listenScrollTarget();
+      this.listenNavigationEnds();
+    });
   }
 
   listenNavigationEnds() {

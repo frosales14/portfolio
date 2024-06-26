@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Injector,
+  afterNextRender,
+  inject,
+} from '@angular/core';
 import { ButtonComponent } from '@shared/components/button/button.component';
 
 @Component({
@@ -9,9 +15,18 @@ import { ButtonComponent } from '@shared/components/button/button.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeHeroComponent {
-  onContactMeClick() {
-    const contactSection = document.getElementById('contac') as HTMLElement;
-    if (!contactSection) return;
-    contactSection.scrollIntoView({ behavior: 'smooth' });
-  }
+  private injector = inject(Injector);
+
+  onContactMeClick = () => {
+    afterNextRender(
+      () => {
+        const contactSection = document.getElementById(
+          'contact'
+        ) as HTMLElement;
+        if (!contactSection) return;
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      },
+      { injector: this.injector }
+    );
+  };
 }
